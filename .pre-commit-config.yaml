@@ -4,10 +4,15 @@
 # Install: pip install pre-commit && pre-commit install
 # Run manually: pre-commit run --all-files
 #
+# Coverage: gitleaks (pre-commit hook) scans staged changes only. scripts/check-secrets.sh
+# also uses git diff --cached, so it checks staged add/copy/modify paths—not the full tree.
+# For full-repo history scanning, rely on GitHub Secret Scanning / Push Protection (see README).
+#
 # Also enable GitHub Secret Scanning + Push Protection on the repo:
 # https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning
 # https://docs.github.com/en/code-security/concepts/secret-security/push-protection
 
+# Vendored Go deps (go mod vendor); excluded from all hooks including gitleaks.
 exclude: "^vendor/"
 
 repos:
